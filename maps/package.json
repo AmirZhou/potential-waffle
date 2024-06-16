@@ -1,0 +1,22 @@
+{
+  "name": "maps",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "parcel": "npx parcel index.html"
+  },
+  "keywords": [],
+  "author": "Amir Zhou",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "buffer": "^6.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@types/google.maps": "^3.55.9"
+  }
+}
