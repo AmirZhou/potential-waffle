@@ -42,3 +42,25 @@ function printAnything<T>(arr: T[]): void {
 }
 printAnything([1, 2, 3, 4, 5]); // Don't need to include <T> here, could use inference. but we better add it.
 printAnything<string>(['1', '2', '3', '4', '5']);
+
+// Generic contrains
+
+class House {
+  print(): void {
+    console.log('This is a house');
+  }
+}
+
+class Car {
+  print(): void {
+    console.log('This is a car');
+  }
+}
+interface Printable {
+  print(): void;
+}
+function PrintHouseOrCar<T extends Printable>(arr: T[]) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i].print();
+  }
+}
