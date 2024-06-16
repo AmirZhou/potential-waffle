@@ -23,3 +23,22 @@ const array1 = new ArrayOfAnything<number>([1, 2, 3, 4]);
 const arrayWithTypeInferenceAroundGenerics = new ArrayOfAnything([
   3, 3, 3, 3, 3,
 ]);
+
+// Examples of generics around functions
+function printString(arr: string[]): void {
+  for (let el of arr) {
+    console.log(el);
+  }
+}
+function printNumbers(arr: number[]): void {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+}
+function printAnything<T>(arr: T[]): void {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+}
+printAnything([1, 2, 3, 4, 5]); // Don't need to include <T> here, could use inference. but we better add it.
+printAnything<string>(['1', '2', '3', '4', '5']);
