@@ -2,7 +2,8 @@ interface UserProps {
   name?: string;
   age?: number;
 }
-type Callback = () => {};
+// type Callback = () => {};
+type Callback = () => void;
 
 export class User {
   events: { [keys: string]: Callback[] } = {};
