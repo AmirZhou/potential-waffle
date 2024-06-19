@@ -33,8 +33,19 @@ export class User {
       method: 'GET',
       url: `http://localhost:3080/users/${this.data.id}`,
     }).then((response: AxiosResponse): void => {
-      console.log(response);
+      // console.log(response);
       this.set(response.data);
+    });
+  }
+  save(): void {
+    const method = this.data.id ? 'PUT' : 'POST';
+    const url = this.data.id
+      ? `http://localhost:3080/users/${this.data.id}`
+      : `http://localhost:3080/users`;
+    axios({
+      method: method,
+      url: url,
+      data: this.data,
     });
   }
 }

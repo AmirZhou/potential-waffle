@@ -31,6 +31,26 @@ import axios from 'axios';
 
 // fetchUser(2);
 
-// jun 19
-const testFetchUser = new User({ id: 1 });
-testFetchUser.fetch();
+// jun 19 -1
+// const testFetchUser = new User({ id: 1 });
+
+// testFetchUser.fetch();
+
+// setTimeout(() => {
+//   console.log(testFetchUser);
+// }, 4000);
+
+// const testPutUser = new User({ id: 2 });
+// testPutUser.set({ name: 'Torin Zhou' });
+// testPutUser.save();
+// setTimeout(() => {
+//   console.log('Waiting update take effect');
+// }, 1000);
+// testPutUser.fetch();
+// setTimeout(() => {
+//   console.log(testPutUser);
+// }, 1000);
+
+// jun 19 -2
+const testSaveWithoutIDUser = new User({ name: 'Amir Zhou', age: 88 });
+testSaveWithoutIDUser.save();
