@@ -4,7 +4,7 @@
     "concurrently": "^8.2.2"
   },
   "scripts": {
-    "start:db": "json-server --watch db.json",
+    "start:db": "json-server --watch db.json --port 3080",
     "start:parcel": "npx parcel index.html",
     "start": "concurrently npm:start:*"
   },

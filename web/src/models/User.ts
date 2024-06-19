@@ -30,8 +30,8 @@ export class User {
   }
   fetch(): void {
     axios({
-      method: 'fetch',
-      url: `http://localhost:3000/users/${this.data.id}`,
+      method: 'GET',
+      url: `http://localhost:3080/users/${this.data.id}`,
     }).then((response: AxiosResponse): void => {
       console.log(response);
       this.set(response.data);
