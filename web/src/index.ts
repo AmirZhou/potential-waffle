@@ -1,7 +1,7 @@
 import { User } from './models/User';
 import axios from 'axios';
 
-const user1 = new User({ name: 'Amir', age: 28 });
+// const user1 = new User({ name: 'Amir', age: 28 });
 
 // user1.on('poke', () => {
 //   console.log(`destory the world`);
@@ -21,12 +21,16 @@ const user1 = new User({ name: 'Amir', age: 28 });
 //   console.log(response.data.events);
 // });
 
-const fetchUser = async (id: number) => {
-  const response = await axios({
-    url: `http://localhost:3000/users/${id}`,
-    method: 'get',
-  });
-  console.log(response.data);
-};
+// const fetchUser = async (id: number) => {
+//   const response = await axios({
+//     url: `http://localhost:3000/users/${id}`,
+//     method: 'get',
+//   });
+//   console.log(response.data);
+// };
 
-fetchUser(2);
+// fetchUser(2);
+
+// jun 19
+const testFetchUser = new User({ id: 1 });
+testFetchUser.fetch();
