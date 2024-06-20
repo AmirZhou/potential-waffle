@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
-import { Callback } from './Eventing';
+import { Eventing } from './Eventing';
 
 interface UserProps {
   id?: number;
@@ -7,8 +7,8 @@ interface UserProps {
   age?: number;
 }
 
-
 export class User {
+  events: Eventing = new Eventing();
   constructor(private data: UserProps) {}
 
   get(propName: string): string | number {
@@ -17,7 +17,7 @@ export class User {
   set(update: UserProps): void {
     Object.assign(this.data, update);
   }
-  
+
   fetch(): void {
     axios({
       method: 'GET',
