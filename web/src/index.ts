@@ -52,5 +52,12 @@ import axios from 'axios';
 // }, 1000);
 
 // jun 19 -2
-const testSaveWithoutIDUser = new User({ name: 'Amir Zhou', age: 88 });
-testSaveWithoutIDUser.save();
+// const testSaveWithoutIDUser = new User({ name: 'Amir Zhou', age: 88 });
+// testSaveWithoutIDUser.save();
+
+// jun 20 -1
+const testEventUser = new User({ name: 'amir', age: 18 });
+testEventUser.events.on('poke', () => {
+  console.log('boss music on');
+});
+testEventUser.events.trigger('poke');
