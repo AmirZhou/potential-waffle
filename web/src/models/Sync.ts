@@ -1,7 +1,10 @@
 import axios, { AxiosPromise } from 'axios';
-import { UserProps } from './User';
 
-export class Sync {
+interface HasId {
+  id: number;
+}
+
+export class Sync<T extends HasId> {
   constructor(private rootUrl: string) {}
   fetch(id: number): AxiosPromise {
     return axios({
@@ -10,13 +13,13 @@ export class Sync {
     });
   }
 
-  save(userProps: UserProps): AxiosPromise {
-    const method = userProps.id ? 'PUT' : 'POST';
-    const url = userProps.id ? `${this.rootUrl}/${userProps.id}` : this.rootUrl;
+  save(data: T): AxiosPromise {
+    const method = data.id ? 'PUT' : 'POST';
+    const url = data.id ? `${this.rootUrl}/${data.id}` : this.rootUrl;
     return axios({
       method: method,
       url: url,
-      data: userProps,
+      data: data,
     });
   }
 }
