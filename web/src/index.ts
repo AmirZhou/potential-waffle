@@ -2,7 +2,7 @@ import { User } from './models/User';
 import axios from 'axios';
 // Jun 21
 const user = new User({ name: 'TestJun21', age: 0 });
-user.sync.save(user.attributes.get('name'));
+// user.sync.save(user.attributes.get('name'));
 // -----------Before Jun 21-----------------------------------
 // const user1 = new User({ name: 'Amir', age: 28 });
 
