@@ -1,6 +1,7 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { Eventing } from './Eventing';
 import { Sync } from './Sync';
+import { Attributes } from './Attributes';
 
 export interface UserProps {
   id?: number;
@@ -11,14 +12,9 @@ export interface UserProps {
 const rootUrl = 'http://localhost:3080/users';
 
 export class User {
+  attributes: Attributes<UserProps> = new Attributes<UserProps>({});
   events: Eventing = new Eventing();
   sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
-  constructor(public data: UserProps) {}
 
-  get(propName: string): string | number {
-    return this.data[propName];
-  }
-  set(update: UserProps): void {
-    Object.assign(this.data, update);
-  }
+  constructor(data: UserProps) {}
 }
