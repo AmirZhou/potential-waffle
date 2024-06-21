@@ -1,6 +1,9 @@
 import { User } from './models/User';
 import axios from 'axios';
-
+// Jun 21
+const user = new User({ name: 'TestJun21', age: 0 });
+user.sync.save(user.attributes.get('name'));
+// -----------Before Jun 21-----------------------------------
 // const user1 = new User({ name: 'Amir', age: 28 });
 
 // user1.on('poke', () => {
@@ -56,8 +59,8 @@ import axios from 'axios';
 // testSaveWithoutIDUser.save();
 
 // jun 20 -1
-const testEventUser = new User({ name: 'amir', age: 18 });
-testEventUser.events.on('poke', () => {
-  console.log('boss music on');
-});
-testEventUser.events.trigger('poke');
+// const testEventUser = new User({ name: 'amir', age: 18 });
+// testEventUser.events.on('poke', () => {
+//   console.log('boss music on');
+// });
+// testEventUser.events.trigger('poke');
