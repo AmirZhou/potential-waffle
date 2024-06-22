@@ -35,4 +35,13 @@ export class User {
     this.attributes.set(update);
     this.trigger('change');
   };
+  fetch = () => {
+    const id = this.attributes.get('id');
+    if (typeof id !== 'number') {
+      throw new Error('Cannot fetch without an ID');
+    }
+    this.sync.fetch(id).then((response: AxiosResponse): void => {
+      this.set(response.data); // use set not attributes.set
+    });
+  };
 }
