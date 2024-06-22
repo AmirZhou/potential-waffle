@@ -44,4 +44,14 @@ export class User {
       this.set(response.data); // use set not attributes.set
     });
   };
+  save = (): void => {
+    this.sync
+      .save(this.attributes.getAll())
+      .then((res: AxiosResponse): void => {
+        this.trigger('save');
+      })
+      .catch((err: AxiosError) => {
+        this.trigger('error');
+      });
+  };
 }
