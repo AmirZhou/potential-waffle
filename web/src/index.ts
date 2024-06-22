@@ -4,10 +4,10 @@ import axios from 'axios';
 const user = new User({ name: 'TestJun21', age: 0 });
 
 console.log(user.get('name'));
-user.on('test flexibily', () => {
-  console.log('pass');
+user.on('change', () => {
+  console.log('smthing changed');
 });
-user.trigger('test flexibily');
+user.set({ name: 'gogogog' });
 // user.sync.save(user.attributes.get('name'));
 // -----------Before Jun 21-----------------------------------
 // const user1 = new User({ name: 'Amir', age: 28 });
