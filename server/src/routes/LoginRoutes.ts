@@ -1,6 +1,9 @@
 import { Router, Request, Response } from 'express';
+import bodyParser from 'body-parser';
 
 const loginRouter = Router();
+
+loginRouter.use(bodyParser.urlencoded({ extended: true }));
 
 loginRouter.get('/', (req, res) => {
   res.send(`
@@ -23,9 +26,9 @@ loginRouter.get('/login', (req: Request, res: Response) => {
 });
 
 loginRouter.post('/login', (req: Request, res: Response) => {
-  console.log(req);
+  const { username, password } = req.body;
   res.send(`
-      <h1>hang on pleasd</h1>
+      <h1>${username}, hang on pleasd, ${password} is correct</h1>
     `);
 });
 
