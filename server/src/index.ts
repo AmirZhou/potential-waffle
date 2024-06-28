@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+// const express = require('express');
 import { loginRouter } from './routes/LoginRoutes';
 
 const app = express();
