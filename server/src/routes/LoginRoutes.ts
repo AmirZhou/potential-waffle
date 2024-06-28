@@ -1,6 +1,10 @@
 import { Router, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 
+interface RequestWithBody extends Request {
+  body: { [key: string]: string | undefined };
+}
+
 const loginRouter = Router();
 
 loginRouter.use(bodyParser.urlencoded({ extended: true }));
@@ -25,11 +29,15 @@ loginRouter.get('/login', (req: Request, res: Response) => {
     `);
 });
 
-loginRouter.post('/login', (req: Request, res: Response) => {
+loginRouter.post('/login', (req: RequestWithBody, res: Response) => {
   const { username, password } = req.body;
-  res.send(`
-      <h1>${username}, hang on pleasd, ${password} is correct</h1>
-    `);
+  if (username) {
+    res.send(`
+      <h1>${username.toUpperCase()}, hang on pleasd, ${password} is correct</h1>
+      `);
+  } else {
+    res.send('<h1>Username must be provided</h1>');
+  }
 });
 
 export { loginRouter };
