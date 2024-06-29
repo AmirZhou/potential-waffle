@@ -10,6 +10,7 @@ const loginRouter = Router();
 
 loginRouter.use(bodyParser.urlencoded({ extended: true }));
 loginRouter.use(cookieSession({ keys: ['abc'] }));
+
 loginRouter.get('/', (req: Request, res: Response) => {
   if (req.session && req.session.isLoggedIn === true) {
     res.send(`
@@ -19,15 +20,19 @@ loginRouter.get('/', (req: Request, res: Response) => {
       </div>
       `);
   } else {
-    `
+    res.send(`
       <div>
         <h1>Hi there! Please login</h1>
         <a href="/login">Login</a>
       </div>
-      `;
+      `);
   }
 });
 
+loginRouter.get('/logout', (req: Request, res: Response) => {
+  req.session = { ...req.session, isLoggedIn: false };
+  res.redirect('/');
+});
 
 loginRouter.get('/login', (req: Request, res: Response) => {
   res.send(`
