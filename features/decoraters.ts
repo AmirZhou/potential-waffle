@@ -1,12 +1,12 @@
 class Boat {
-  // @testDecorator
+  // @testDecorator this will not work
   color: string = 'red';
 
   @logError('Oop boat was sunk in ocean')
   pilot(): void {
     throw new Error();
   }
-  // @testDecorator
+  @testDecorator
   get formattedColor(): string {
     return `The color is ${this.color}`;
   }
@@ -26,6 +26,12 @@ function logError(errMessage: string) {
       }
     };
   };
+}
+
+function testDecorator(target: any, key: string, desc: PropertyDescriptor) {
+  console.log(`target: ${target}`);
+  console.log(`key: ${key}`);
+  // console.log(desc.value);  this line not going to work, because decorator doesn't have access to property.
 }
 
 const aBoat = new Boat();
