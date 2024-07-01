@@ -51,11 +51,11 @@ class House {
   }
 }
 
-class Car {
-  print(): void {
-    console.log('This is a car');
-  }
-}
+// class Car {
+//   print(): void {
+//     console.log('This is a car');
+//   }
+// }
 interface Printable {
   print(): void;
 }
