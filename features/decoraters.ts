@@ -2,7 +2,7 @@ class Boat {
   // @testDecorator
   color: string = 'red';
 
-  @logError
+  @logError('Oop boat was sunk in ocean')
   pilot(): void {
     throw new Error();
   }
@@ -13,14 +13,18 @@ class Boat {
 }
 
 // arrow function not work
-function logError(target: any, key: string, desc: PropertyDescriptor): void {
-  const method = desc.value;
-  desc.value = () => {
-    try {
-      method();
-    } catch (err) {
-      console.log('boat sank');
-    }
+// in both the factory and the return function
+// all have to be function declaration
+function logError(errMessage: string) {
+  return function (target: any, key: string, desc: PropertyDescriptor): void {
+    const method = desc.value;
+    desc.value = () => {
+      try {
+        method();
+      } catch (err) {
+        console.log(errMessage);
+      }
+    };
   };
 }
 
