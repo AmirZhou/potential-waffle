@@ -2,9 +2,9 @@ class Boat {
   // @testDecorator
   color: string = 'red';
 
-  @testDecorator
+  @logError
   pilot(): void {
-    console.log('swish');
+    throw new Error();
   }
   // @testDecorator
   get formattedColor(): string {
@@ -13,7 +13,7 @@ class Boat {
 }
 
 // arrow function not work
-function testDecorator(target: any, key: string): void {
+function logError(target: any, key: string, desc: PropertyDescriptor): void {
   console.log(`target: ${target}`);
   console.log(`key: ${key}`);
 }
