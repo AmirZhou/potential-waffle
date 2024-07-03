@@ -1,6 +1,7 @@
 import 'reflect-metadata';
+import { Methods } from './Methods';
 
-function routerBinder(method: string) {
+function routerBinder(method: Methods) {
   return function (path: string) {
     return function (target: any, key: string, desc: PropertyDescriptor) {
       Reflect.defineMetadata('path', path, target, key);
@@ -9,8 +10,8 @@ function routerBinder(method: string) {
   };
 }
 
-export const get = routerBinder('get');
-export const post = routerBinder('post');
-export const del = routerBinder('delete');
-export const patch = routerBinder('patch');
-export const put = routerBinder('put');
+export const get = routerBinder(Methods.get);
+export const post = routerBinder(Methods.post);
+export const del = routerBinder(Methods.del);
+export const patch = routerBinder(Methods.patch);
+export const put = routerBinder(Methods.put);

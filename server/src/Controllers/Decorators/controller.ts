@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { AppRouter } from '../../AppRouter';
+import { Methods } from './Methods';
 
 export function controller(routePrefix: string) {
   const router = AppRouter.getInstance();
@@ -7,8 +8,13 @@ export function controller(routePrefix: string) {
     Object.getOwnPropertyNames(constructor.prototype).forEach((key) => {
       const routeHandler = constructor.prototype[key];
       const path = Reflect.getMetadata('path', constructor.prototype, key);
+      const method: Methods = Reflect.getMetadata(
+        'method',
+        constructor.prototype,
+        key
+      );
       if (path) {
-        router.get(`${routePrefix}${path}`, routeHandler);
+        router[method](`${routePrefix}${path}`, routeHandler);
       }
     });
   };
