@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { get } from './Decorators/routes';
+import {controller} from './Decorators/controller';
 
-// @controller()
+@controller('/auth')
 class LoginController {
   @get('/login')
   getLogin(req: Request, res: Response): void {
