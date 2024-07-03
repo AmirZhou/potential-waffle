@@ -1,9 +1,8 @@
 import 'reflect-metadata';
-import express from 'express';
-
-export const router = express.Router();
+import { AppRouter } from '../../AppRouter';
 
 export function controller(routePrefix: string) {
+  const router = AppRouter.getInstance();
   return function (constructor: Function) {
     Object.getOwnPropertyNames(constructor.prototype).forEach((key) => {
       const routeHandler = constructor.prototype[key];
