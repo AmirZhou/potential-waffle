@@ -19,3 +19,11 @@ class LoginController {
       `);
   }
 }
+
+
+// class LoginController is a class contains handlers, 
+// these handlers, do not got path included, rather, path is added by decorators
+// What is resuable here? 
+// and the controller decorater loop over the handlers and add them to a singoleton Router obj.
+// so that we don't need to add these manually.
+// 
