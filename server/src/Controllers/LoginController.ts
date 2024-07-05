@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 // import { get } from './Decorators/routes';
 // import {controller} from './Decorators/controller';
 // import { get, controller } from './Decorators/index';
-import { get, use, controller } from './Decorators';
+import { get, use, controller, bodyValidator } from './Decorators';
 
 const logger = (req: Request, res: Response, next: NextFunction) => {
   console.log('test middleware: Incoming request');
