@@ -46,7 +46,7 @@ loginRouter.get('/login', (req: Request, res: Response) => {
       <form method='POST'>
         <label>Username</label>
         <input name = 'username'></input>
-        <label>Password</label>
+        <label>Password</label> 
         <input name = 'password' type= 'password'></input>
         <button>Submit</button>
       </form>
