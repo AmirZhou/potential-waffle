@@ -4,15 +4,15 @@ import { Methods } from './Methods';
 import { MetadataKeys } from './MetadataKeys';
 import { RequestHandler, Request, Response, NextFunction } from 'express';
 
-function validateBodyFields(keys: string[]): RequestHandler {
+function validateBodyFields(fields: string[]): RequestHandler {
   return function (req: Request, res: Response, next: NextFunction) {
     if (!req.body) {
       res.status(422).send('Get out of here Zordon');
       return;
     }
-    for (let key of keys) {
-      if (!req.body[key]) {
-        res.status(422).send('Get out of here fast');
+    for (let field of fields) {
+      if (!req.body[field]) {
+        res.status(422).send(`Missing ${field} field`);
         return;
       }
     }

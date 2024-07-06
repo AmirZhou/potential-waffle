@@ -32,6 +32,12 @@ class LoginController {
       res.redirect('/auth/login');
     }
   }
+
+  @get('logout')
+  getLogout(req: Request, res: Response) {
+    req.session = { ...req.session, isLoggedIn: false };
+    res.redirect('/');
+  }
 }
 // loginRouter.post('/login', (req: RequestWithBody, res: Response) => {
 //   const { username, password } = req.body;

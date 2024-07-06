@@ -36,10 +36,7 @@ loginRouter.get('/', (req: Request, res: Response) => {
   }
 });
 
-loginRouter.get('/logout', (req: Request, res: Response) => {
-  req.session = { ...req.session, isLoggedIn: false };
-  res.redirect('/');
-});
+
 
 loginRouter.get('/login', (req: Request, res: Response) => {
   res.send(`
@@ -57,16 +54,7 @@ loginRouter.get('/protected', requireAuth, (req: Request, res: Response) => {
   res.send(`<h1>Protectd route</h1>`);
 });
 
-loginRouter.post('/login', (req: RequestWithBody, res: Response) => {
-  const { username, password } = req.body;
-  if (username && password && username === '1' && password === '1') {
-    // mark the person as logged in
-    req.session = { ...req.session, isLoggedIn: true };
-    res.redirect('/');
-    // redirect them to the root route
-  } else {
-    res.redirect('/login');
-  }
-});
+
+
 
 export { loginRouter };
