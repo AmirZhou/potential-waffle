@@ -4,7 +4,7 @@ import { Methods } from './Methods';
 import { MetadataKeys } from './MetadataKeys';
 import { RequestHandler, Request, Response, NextFunction } from 'express';
 
-function validateInputProps(keys: string[]): RequestHandler {
+function validateBodyFields(keys: string[]): RequestHandler {
   return function (req: Request, res: Response, next: NextFunction) {
     if (!req.body) {
       res.status(422).send('Get out of here Zordon');
@@ -52,7 +52,7 @@ export function controller(routePrefix: string) {
         router[method](
           `${routePrefix}${path}`,
           [...middlewares],
-          validateInputProps(requireBodyProps),
+          validateBodyFields(requireBodyProps),
           routeHandler
         );
       }

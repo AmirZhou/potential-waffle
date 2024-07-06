@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { get, post, use, controller, bodyValidator } from './Decorators';
+import { get, post, use, controller, requireBodyFields } from './Decorators';
 
 const logger = (req: Request, res: Response, next: NextFunction) => {
   console.log('test middleware: Incoming request');
@@ -22,7 +22,7 @@ class LoginController {
       `);
   }
   @post('/login')
-  @bodyValidator('username', 'password')
+  @requireBodyFields('username', 'password')
   postLogin(req: Request, res: Response): void {
     const { username, password } = req.body;
     if (username === '1' && password === '1') {
