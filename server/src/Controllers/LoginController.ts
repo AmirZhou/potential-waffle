@@ -1,8 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-// import { get } from './Decorators/routes';
-// import {controller} from './Decorators/controller';
-// import { get, controller } from './Decorators/index';
-import { get, use, controller, bodyValidator } from './Decorators';
+import { get, post, use, controller, bodyValidator } from './Decorators';
 
 const logger = (req: Request, res: Response, next: NextFunction) => {
   console.log('test middleware: Incoming request');
@@ -24,7 +21,29 @@ class LoginController {
         </form>
       `);
   }
+  @post('/login')
+  @bodyValidator('username', 'password')
+  postLogin(req: Request, res: Response): void {
+    const { username, password } = req.body;
+    if (username === '1' && password === '1') {
+      req.session = { ...req.session, isLoggedIn: true };
+      res.redirect('/');
+    } else {
+      res.redirect('/auth/login');
+    }
+  }
 }
+// loginRouter.post('/login', (req: RequestWithBody, res: Response) => {
+//   const { username, password } = req.body;
+//   if (username && password && username === '1' && password === '1') {
+//     // mark the person as logged in
+//     req.session = { ...req.session, isLoggedIn: true };
+//     res.redirect('/');
+//     // redirect them to the root route
+//   } else {
+//     res.redirect('/login');
+//   }
+// });
 
 // class LoginController is a class contains handlers,
 // these handlers, do not got path included, rather, path is added by decorators
