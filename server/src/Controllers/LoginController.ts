@@ -33,7 +33,7 @@ class LoginController {
     }
   }
 
-  @get('logout')
+  @get('/logout')
   getLogout(req: Request, res: Response) {
     req.session = { ...req.session, isLoggedIn: false };
     res.redirect('/');
